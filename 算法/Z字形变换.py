@@ -8,6 +8,27 @@
 '''
 
 
+'''
+
+0       0       0
+1  -2   1  -2
+-1     -1
+
+
+0                       -n=0
+1                     -(n-1)  
+2                   -(n-2)
+3                 -(n-3)
+。              .
+。            .
+。          .
+。       -3
+n-1   -2
+-1
+
+
+'''
+
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
         if numRows < 2: return s
