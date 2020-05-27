@@ -38,22 +38,29 @@ class Solution:
                     res += 1
         return res
 
-    # todo 需要优化这个算法！
     def subarraysDivByK(self, A, K):
-        res = 0
-        A_len = len(A)
-        for i in range(A_len):
-            if A[i] % K == 0:
-                res += 1
-            for z in range(i + 2, A_len + 1):
-                total = sum(A[i:z])
-                if total % K == 0:
-                    res += 1
-        return res
+        '''
+        这里需要注意是的是 同余定理 如果 A/B mod K 相同，那么 A+B/A-B 也是 mod K
+        :param A:
+        :param K:
+        :return:
+        '''
+
+        record = {0: 1}
+        total, ant = 0, 0
+        for i in A:
+            total += i
+            module = total % K
+            same = record.get(module, 0)
+            ant += same
+
+            record[module] = same + 1
+
+        return ant
 
 
 if __name__ == '__main__':
-    # A = [4, 5, 0, -2, -3, 1]
-    A = [-5]
+    A = [4, 5, 0, -2, -3, 1]
+    # A = [-5]
     K = 5
     print(Solution().subarraysDivByK(A, K))
