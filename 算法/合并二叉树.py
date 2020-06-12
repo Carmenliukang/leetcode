@@ -41,7 +41,7 @@ class TreeNode:
 class Solution:
     def mergeTrees(self, t1: TreeNode, t2: TreeNode) -> TreeNode:
         if not t1: return t2
-        if not t2: return t1
+        if not t2: return t1 # 又一次这里写错了，操作返回结果出现了问题，这里需要处理，代码简单的修改一点，就有可能产生意想不到的错误。
 
         val = self.check_val(t1.val) + self.check_val(t2.val)
 
