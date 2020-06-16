@@ -22,11 +22,12 @@ def helper(help_dict, N):
 
 
 def fib_v2(N):
-    dp = [1, 1]
-    for i in range(2, N):
+    # 为什么从 0 开始，因为N 如果是 0，那么就直接返回其固定值为0
+    dp = [0, 1, 1]
+    for i in range(3, N + 1):
         dp.append((dp[i - 1] + dp[i - 2]))
 
-    return dp[-1]
+    return dp[N]
 
 
 if __name__ == '__main__':
