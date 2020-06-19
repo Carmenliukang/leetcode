@@ -22,13 +22,15 @@
 
 class Solution:
     def permute(self, nums):
+        # 特殊情况处理
         if not nums:
             return []
         res = []
 
+        # 回溯算法
+        # 选择成功
         def backtrack(nums, track=[]):
-            print(track)
-
+            #
             if len(nums) == len(track):
                 res.append(track[:])
                 return
