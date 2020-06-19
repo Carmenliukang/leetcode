@@ -28,7 +28,8 @@ class Solution:
         res = []
 
         # 回溯算法
-        # 选择成功
+        # 选择成功 那么将结果 放入到系统中
+        # 遍历其他可选项
         def backtrack(nums, track=[]):
             #
             if len(nums) == len(track):
