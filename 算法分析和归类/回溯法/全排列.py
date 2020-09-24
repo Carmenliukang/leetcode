@@ -43,7 +43,6 @@ class Solution:
                 # 这里需要注意的是  pop 删除最后的元素，不用清空整个 list
                 track.pop()
                 # 这句话是清空整个list。
-                # track.clear()
 
         backtrack(nums)
         return res
