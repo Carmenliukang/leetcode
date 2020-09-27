@@ -22,5 +22,6 @@ def selection_sort(nums):
 
 if __name__ == '__main__':
     nums = [1, 4, 76, 3, 24, 6, 7]
+
     print(nums)
     print(selection_sort(nums))
