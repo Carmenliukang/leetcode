@@ -75,8 +75,8 @@ class Solution:
         root = ListNode(-val)
         root.next = head
 
-        pre = root  # 前节点
-        tmp = root.next  # 后节点
+        pre = root  # 前指针
+        tmp = root.next  # 后指针
 
         # 判断是否存在该节点
         flag = False
