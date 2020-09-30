@@ -38,4 +38,7 @@ class Solution:
 这里的难点就是理解 node 访问的其实就是当前节点的位置。然后将其替换
 然后将 val 指定，next 进行替换
 
+
+# 图片底层图片链接：https://s1.ax1x.com/2020/09/30/0mbwGD.png
+
 """
