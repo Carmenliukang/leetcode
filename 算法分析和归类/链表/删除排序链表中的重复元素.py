@@ -85,3 +85,20 @@ class Solution:
             cur = cur.next
         # 返回源节点，只是修改了节点的引用下标
         return head
+
+    def deleteDuplicatesMethod2(self, head: ListNode) -> ListNode:
+        """
+        这里使用的就是直接一个遍历的结果，因为链表的 next 是可以直接指到 下一个节点的 val 和 next 熟知的
+        这个比我上面写的简单多了。这确实是一个非常不错的方法，同时我也学习到了很多。
+        :param head: 链表
+        :return:
+        """
+
+        current = head
+        while current != None and current.next != None:
+            if current.val == current.next.val:
+                current.next = current.next.next
+            else:
+                current = current.next
+
+        return head
