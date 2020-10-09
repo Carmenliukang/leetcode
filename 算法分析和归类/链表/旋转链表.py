@@ -31,3 +31,51 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 """
+
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
+class Solution:
+    def rotateRight(self, head: ListNode, k: int) -> ListNode:
+        """
+        1. 获取深度
+        2. 计算 index
+        3. index 节点 设置为 头结点， 链表最后一个节点对应开头节点，index-1 设置为最后一个节点
+        """
+
+        # 判断其最后的结果是否一致
+        if not head or not k:
+            return head
+
+        nums = []
+        total = 0
+
+        # 这里需要注意的是需要同步其他的节点
+        p = head
+        while p:
+            total += 1
+            nums.append(p.val)
+            p = p.next
+
+        # 有可能需要循环，所以，记性取余操作。
+        index = k % total
+        if not index:
+            return head
+
+        # 获取最后的链表结果
+        res = nums[-index:] + nums[:total - index]
+
+        # 生成相关的状态截图
+        root = ListNode(-1)
+        p = root
+        for i in res:
+            node = ListNode(i)
+            root.next = node
+            root = root.next
+
+        return p.next
