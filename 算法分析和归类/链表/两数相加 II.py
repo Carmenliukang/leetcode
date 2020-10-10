@@ -40,7 +40,25 @@ class ListNode:
 
 
 class Solution:
+
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        """
+        1. 特殊情况判断
+        2. 使用 list 先进后出的方式，进行最后结果的计算
+        """
+        p1, p2 = l1, l2
+        nums1, nums2 = self.get_val(p1), self.get_val(p2)
+        place, total = 0, 0
+        while nums1 or nums2:
+            num1 = nums1.pop() if nums1 else 0
+            num2 = nums2.pop() if nums2 else 0
+            total += (num1 + num2) * pow(10, place)
+            place += 1
+
+        total_list = list(str(total))
+        return self.create_list(total_list)
+
+    def addTwoNumbersMehtod(self, l1: ListNode, l2: ListNode) -> ListNode:
         """
         1. 特殊情况处理
         2. 遍历链表，list

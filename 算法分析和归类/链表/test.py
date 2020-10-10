@@ -22,6 +22,10 @@ print(zip(l1, l2))
 for k, v in zip(l1, l2):
     print(k, v)
 
+print(10 ^ 1)
+print(pow(10, 0))
 
-print(10^1)
-print(pow(10,0))
+# data = [1, 2, 3, 4]
+data = []
+print(data.pop())
+print(data)
