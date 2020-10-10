@@ -14,3 +14,14 @@ res = [-1, 0, 0, 0, 0, 3, 3]
 print(set(res))
 # {0, 3, -1}
 # {0, 3, -1}
+
+
+l1 = [1, 2, 3]
+l2 = [3, 4, 5, 6, 7]
+print(zip(l1, l2))
+for k, v in zip(l1, l2):
+    print(k, v)
+
+
+print(10^1)
+print(pow(10,0))
