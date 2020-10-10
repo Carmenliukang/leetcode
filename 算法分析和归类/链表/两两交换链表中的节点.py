@@ -34,6 +34,28 @@ class ListNode:
 class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
         """
+        使用链表的方式更新相关的数据
+        :type head: ListNode
+        :rtype: ListNode
+        """
+
+        # If the list has no node or has only one node left.
+        if not head or not head.next:
+            return head
+
+        # Nodes to be swapped
+        first_node = head
+        second_node = head.next
+
+        # Swapping
+        first_node.next = self.swapPairs(second_node.next)
+        second_node.next = first_node
+
+        # Now the head is the second node
+        return second_node
+
+    def swapPairsMethod(self, head: ListNode) -> ListNode:
+        """
         1. 特殊情况处理
         2. 使用指针同步
         """
@@ -43,19 +65,15 @@ class Solution:
 
         pre = ListNode(-1)
         pre.next = head
-
-        # 指向最开始的地方同步
         root = pre
 
-        # 这里需要判断 是否有三个节点，如果没有，那么说明最后一个节点是 None
+        # 因为这个是在 一个 链表操作，所以才会这样处理，但是整体的代码还是不够简洁
         while pre and pre.next and pre.next.next:
-            # 边界条件的判断，这里因为是需要末位节点的判断，所以才会这样同步
-            # 这里需要单独生成 node 节点
+            # 边界条件判断
             end = pre.next.next.next if pre.next.next and pre.next.next.next else None  # 末位节点
             start = pre.next.next  # 开始节点
             node = pre.next  # next 节点
 
-            # 节点的next 指向同步
             pre.next = start
             start.next = node
             node.next = end
