@@ -40,7 +40,8 @@ class Solution:
         """
         if not head:
             return head
-        # 发现中间节点链表
+        # 发现中间节点链表,
+        # 这里也需要注意，不论 奇偶，都是下一个节点 开始进行 倒序，这里是一个边界的处理
         mid = self.findMid(head)
         tail = mid.next
 
