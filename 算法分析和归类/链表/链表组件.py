@@ -61,12 +61,13 @@ class ListNode:
 class Solution:
     def numComponents(self, head: ListNode, G: list[int]) -> int:
         total = 0
+        G = set(G)
         while head:
             # 如果判断数值在G，那么进行循环，遍历，使用滑动窗口的方式同步
             if head.val in G:
                 # 使用滑动窗口的方式进行遍历
                 while head and head.val in G:
-                    G.remove(head.val)
+                    # G.remove(head.val)  # 过滤相关的状态
                     head = head.next
                 total += 1
             else:
