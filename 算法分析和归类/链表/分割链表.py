@@ -61,7 +61,7 @@ class Solution:
                 right = right.next
 
             # 这里为什么要断开呢？
-            # TODO 因为之前已经 形成了 换，所以还是需要同步一下结果。
+            # TODO 因为之前已经 形成了 换，所以需要将这个链表的环 进行断开
             head.next = None
 
             head = next
