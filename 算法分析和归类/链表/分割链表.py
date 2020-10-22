@@ -25,6 +25,17 @@ class ListNode:
 
 class Solution:
     def partition(self, head: ListNode, x: int) -> ListNode:
+        """
+        双指针法
+        划分左,右两个链表
+        左链表用来链接值小于x的节点
+        右链表链接其他节点
+        最后把左链表的尾节点指向右链表的头节点,完成拼接
+
+        :param head: 指针同步
+        :param x:
+        :return:
+        """
         # 先获取结果，同步最初的目标
 
         if not head:
