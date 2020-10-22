@@ -32,6 +32,8 @@ class Solution:
         右链表链接其他节点
         最后把左链表的尾节点指向右链表的头节点,完成拼接
 
+        中间需要注意的就是 判断的时候会生成环，所以需要将环断开才可以。
+
         :param head: 指针同步
         :param x:
         :return:
@@ -50,6 +52,7 @@ class Solution:
             # 对于下一个尝试同步
             next = head.next
 
+            # 下面的这里其实已经变成了环！所以head 需要将 next 的下一位 置位 None
             if head.val < x:
                 left.next = head
                 left = left.next
