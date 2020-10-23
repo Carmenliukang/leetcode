@@ -46,7 +46,27 @@ class ListNode:
 
 class Solution:
     def nextLargerNodes(self, head: ListNode) -> list[int]:
-        # 1. 记录 [:i] 最大值l
-        # 2. 依次写入数据中
-        # TODO 2020.10.22 任务
-        pass
+        # 遍历链表，获取所有的数据
+        data, res, total = [], [], 0
+        root = head
+        while root:
+            total += 1
+            data.append(root.val)
+            root = root.next
+
+        # 获取最大数值
+        for start in range(total - 1):
+            max_num = data[start]
+            for end in range(start + 1, total):
+                max_num = max(data[start:end + 1])
+                if max_num > data[start]:
+                    break
+
+            res.append(max_num if max_num > data[start] else 0)
+
+        # 最后一个节点
+        res.append(0)
+
+        return res
+
+
