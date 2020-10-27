@@ -61,7 +61,7 @@ class Solution:
         # 开始从 list 倒数第二个 读取，是因为最后一个一定是 0
         for j in range(len(result) - 1, -1, -1):
 
-            print("*"*30)
+            print("*" * 30)
             if not stack:
                 stack.append(nums[j])
             else:
