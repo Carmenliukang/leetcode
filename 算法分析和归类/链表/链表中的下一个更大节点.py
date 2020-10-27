@@ -45,28 +45,38 @@ class ListNode:
 
 
 class Solution:
-    def nextLargerNodes(self, head: ListNode) -> list[int]:
-        # 遍历链表，获取所有的数据
-        data, res, total = [], [], 0
-        root = head
-        while root:
-            total += 1
-            data.append(root.val)
-            root = root.next
+    def nextLargerNodes(self, head: ListNode) -> List[int]:
+        # 转为顺序表
+        cur = head
+        nums = []
+        while cur:
+            nums.append(cur.val)
+            cur = cur.next
 
-        # 获取最大数值
-        for start in range(total - 1):
-            max_num = data[start]
-            for end in range(start + 1, total):
-                max_num = max(data[start:end + 1])
-                if max_num > data[start]:
-                    break
+        # 求解
+        stack = []
+        # 最后结果的 list
+        result = [0 for i in range(len(nums))]
+        # 倒序 读取 list
+        # 开始从 list 倒数第二个 读取，是因为最后一个一定是 0
+        for j in range(len(result) - 1, -1, -1):
 
-            res.append(max_num if max_num > data[start] else 0)
+            print("*"*30)
+            if not stack:
+                stack.append(nums[j])
+            else:
+                x = nums[j]
+                while stack and stack[-1] <= x:
+                    print("开始进入循环")
+                    stack.pop()
 
-        # 最后一个节点
-        res.append(0)
+                # 因为这里已经默认设置成0了，所以不用修改。
+                if stack:
+                    result[j] = stack[-1]
+                stack.append(x)
 
-        return res
+            print(j, nums[j], stack, result)
 
+            print("*" * 30)
 
+        return result
