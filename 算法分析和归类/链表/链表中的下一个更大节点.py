@@ -45,7 +45,7 @@ class ListNode:
 
 
 class Solution:
-    def nextLargerNodes(self, head: ListNode) -> List[int]:
+    def nextLargerNodes(self, head: ListNode) -> list[int]:
         # 转为顺序表
         cur = head
         nums = []
