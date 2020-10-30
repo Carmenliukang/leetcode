@@ -40,6 +40,15 @@ class Solution:
             head = head.next  # 这里是作为一个调用方式的原理
         return res[::-1]  # 进行最后结果的一个倒序
 
+    def createListNode(self, data):
+        root = ListNode(-1)
+        head = root
+        for i in data:
+            node = ListNode(i)
+            head.next = node
+            head = head.next
+        return root.next
+
 
 if __name__ == '__main__':
     data = [1, 2, 3]
