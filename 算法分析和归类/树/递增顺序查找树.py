@@ -56,16 +56,31 @@ class TreeNode:
 
 class Solution:
     def increasingBST(self, root):
-        # 这里使用的是 yield 方式同步，能够节省内存，这里真的太赞了
+        # 这里使用的是 yield 方式同步，能够节省内存，这里真的太赞了 TODO 学习
         def inorder(node):
             if node:
                 yield from inorder(node.left)
                 yield node.val
                 yield from inorder(node.right)
 
-        # 测试同步账户
+        # 进行相关的遍历方式同步
         ans = cur = TreeNode(None)
         for v in inorder(root):
             cur.right = TreeNode(v)
             cur = cur.right
+        return ans.right
+
+    def increasingBSTMethod(self, root):
+        # 这里是递归的方式同步
+        def inorder(node):
+            if node:
+                # 先遍历其左子树，然后将node 的 左子树节点 置位 null，防止成为环
+                inorder(node.left)
+                node.left = None
+                self.cur.right = node
+                self.cur = node
+                inorder(node.right)
+
+        ans = self.cur = TreeNode(None)
+        inorder(root)
         return ans.right
