@@ -21,7 +21,6 @@
 提示：
 给定树的节点数范围是 [1, 100]。
 每个节点的值都是整数，范围为 [0, 99] 。
-通过次数15,455提交次数22,916
 
 来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/univalued-binary-tree
@@ -54,3 +53,18 @@ class Solution:
 
         get_res(root)
         return self.res
+
+    def isUnivalTreeMethod(self, root: TreeNode) -> bool:
+        # 这里使用的是递归的方式同步状态。
+        if not root:
+            return True
+
+        # 保证 左子树 相关的状态都一致
+        if root and root.left and root.val != root.left.val:
+            return False
+
+        # 保证 右子树 相关的状态都一致
+        if root and root.right and root.val != root.right.val:
+            return False
+
+        return self.isUnivalTree(root.left) and self.isUnivalTree(root.right)
