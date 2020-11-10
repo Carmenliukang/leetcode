@@ -34,13 +34,16 @@ class Node:
 
 
 class Solution:
-    # 这里需要注意的节点就是一个同步。
+    # 确定参数
     def maxDepth(self, root: 'Node') -> int:
+        # 确定终止状态
         if root is None:
             return 0
+        # 确定单个节点的状态
         elif root.children == []:
             return 1
         else:
             # 最高的深度
+            # 递归获取最终的结果。
             height = [self.maxDepth(c) for c in root.children]
             return max(height) + 1
