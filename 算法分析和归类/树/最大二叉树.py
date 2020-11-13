@@ -46,7 +46,7 @@ class TreeNode:
 
 
 class Solution:
-    def constructMaximumBinaryTree(self, nums: List[int]) -> TreeNode:
+    def constructMaximumBinaryTree(self, nums: list[int]) -> TreeNode:
         return self.create_largest_tree(nums, 0, len(nums))
 
     def create_largest_tree(self, nums, left, right):
