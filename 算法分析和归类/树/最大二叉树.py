@@ -55,6 +55,7 @@ class Solution:
         # 3. 左右树 同步
         if left == right:
             return None
+        # 这里是使用相关的状态同步
         mid = self.get_max_id(nums, left, right)
         root = TreeNode(nums[mid])
 
