@@ -37,6 +37,7 @@ class TreeNode:
         self.right = None
 
 class Solution:
+    # TODO 这里一定要好好看一下
     def pathSum(self, root: TreeNode, sum: int) -> int:
         if not root:
             return 0
