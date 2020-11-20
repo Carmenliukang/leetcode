@@ -40,6 +40,7 @@ class TreeNode:
 
 
 class Solution:
+    # TODO 这里还是需要更加深入的理解才可以，对于递归的理解还是不够深入。
     def delNodes(self, root: TreeNode, to_delete: list[int]) -> list[TreeNode]:
         # 如果树为空，那么就返回 []
         if not root:
