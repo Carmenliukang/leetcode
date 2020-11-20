@@ -40,25 +40,35 @@ class TreeNode:
 
 
 class Solution:
-    def __init__(self):
-        self.res = []
-
     def delNodes(self, root: TreeNode, to_delete: list[int]) -> list[TreeNode]:
-        if not root: return []
-        mapper = set(to_delete)
-        # root 节点初始的 特殊判断，TODO
-        ans = [] if root.val in mapper else [root]
+        # 如果树为空，那么就返回 []
+        if not root:
+            return []
 
-        def dfs(node, parent, direction):
-            if not node: return
-            dfs(node.left, node, 'left')
-            dfs(node.right, node, 'right')
-            if node.val in mapper:
-                if node.left: ans.append(node.left)
-                if node.right: ans.append(node.right)
-                if direction == 'left':
+        # 使用 set 方式同步更加多的方式
+        to_delete_set = set(to_delete)
+        ans = [root] if root.val not in to_delete_set else []
+
+        # 使用 DFS 递归尝试
+        def dfs(node, parent, par):
+            # node 为当前节点
+            # parent 为父节点
+            # par 为当前节点为  父节点的 哪一个 子树
+            if not node:
+                return
+
+            dfs(node.left, node, "left")
+            dfs(node.right, node, "right")
+            if node.val in to_delete_set:
+                # 如果这些数据为
+                if node.left:
+                    ans.append(node.left)
+                if node.right:
+                    ans.append(node.right)
+                # 将父节点的左右子树置位空
+                if par == "left":
                     parent.left = None
-                if direction == 'right':
+                if par == "right":
                     parent.right = None
 
         dfs(root, None, None)
