@@ -46,8 +46,9 @@ class Solution:
         if not root:
             return []
 
-        # 使用 set 方式同步更加多的方式
+        # 使用 set 方式提升速度
         to_delete_set = set(to_delete)
+        # 如果 根节点 不在需要删除的节点中，那么就说明这个节点是 林中节点
         ans = [root] if root.val not in to_delete_set else []
 
         # 使用 DFS 递归尝试
