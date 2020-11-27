@@ -32,11 +32,45 @@ class TreeNode:
 
 
 class Solution(object):
+    def __init__(self):
+        self.res = []
+
+    def rightSideViewRecursive(self, root: TreeNode) -> list[int]:
+        # 使用递归的方式调用，生成其相关的接口同步
+        self.dfs(root, 0)
+        return self.res
+
+    def dfs(self, node, depth):
+        """
+        1. 判断终止条件
+        2. 递归方式同步
+        3. 后续遍历，因为是右视图，所以使用后序遍历，如果是左视图，那么就使用 前序遍历
+        :param node:
+        :param depth:
+        :return:
+        """
+        if not node:
+            return
+
+        if depth == len(self.res):
+            self.res.append(node.val)
+
+        depth += 1
+        self.dfs(node.right, depth)
+        self.dfs(node.left, depth)
+
     def rightSideView(self, root):
+        """
+        这里使用的是状态的修改
+        :param root:
+        :return:
+        """
         # TODO 这里的题目需要同步看一下。
+
         rightmost_value_at_depth = dict()  # 深度为索引，存放节点的值
         max_depth = -1
 
+        # 这里使员工
         stack = [(root, 0)]
         while stack:
             # pop 是从最右边进行删除的
@@ -53,3 +87,35 @@ class Solution(object):
                 stack.append((node.right, depth + 1))
 
         return [rightmost_value_at_depth[depth] for depth in range(max_depth + 1)]
+
+
+# 变型 二叉树的 左视图
+
+class SolutionLeft(object):
+    def __init__(self):
+        self.res = []
+
+    def leftSideViewRecursive(self, root: TreeNode) -> list[int]:
+        # 使用递归的方式调用，生成其相关的接口同步
+        self.dfs(root, 0)
+        return self.res
+
+    def dfs(self, node, depth):
+        """
+        1. 判断终止条件
+        2. 递归方式同步
+        3. 后续遍历，因为是右视图，所以使用后序遍历，如果是左视图，那么就使用 前序遍历
+        :param node:
+        :param depth:
+        :return:
+        """
+        if not node:
+            return
+
+        if depth == len(self.res):
+            self.res.append(node.val)
+
+        depth += 1
+
+        self.dfs(node.left, depth)
+        self.dfs(node.right, depth)
