@@ -69,7 +69,7 @@ class Solution:
         self.dfs(node.right, depth)
 
     def findBottomLeftValueMethod(self, root: TreeNode) -> int:
-        # 这里使用的是 栈的思想去同步状态
+        # 这里使用的是 栈的思想去同步状态，那么这里的问题其实也还有更加多的状态同步。这里也是一种方式。
         queue = [root]
         while queue:
             node = queue.pop(0)
