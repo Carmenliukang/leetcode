@@ -67,3 +67,14 @@ class Solution:
         depth += 1
         self.dfs(node.left, depth)
         self.dfs(node.right, depth)
+
+    def findBottomLeftValueMethod(self, root: TreeNode) -> int:
+        # 这里使用的是 栈的思想去同步状态
+        queue = [root]
+        while queue:
+            node = queue.pop(0)
+            if node.right:  # 先右后左
+                queue.append(node.right)
+            if node.left:
+                queue.append(node.left)
+        return node.val
