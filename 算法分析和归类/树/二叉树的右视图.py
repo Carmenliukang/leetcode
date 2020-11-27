@@ -65,7 +65,7 @@ class Solution(object):
         :param root:
         :return:
         """
-        # TODO 这里的题目需要同步看一下。
+        # TODO 对于栈的理解还是不够深入，需要认真思考一下。
 
         rightmost_value_at_depth = dict()  # 深度为索引，存放节点的值
         max_depth = -1
