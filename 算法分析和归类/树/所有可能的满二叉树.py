@@ -30,6 +30,34 @@ https://aliyun-lc-upload.oss-cn-hangzhou.aliyuncs.com/aliyun-lc-upload/uploads/2
 
 """
 
+"""
+算法题解：
+
+首先判断N，如果N为偶数，是不可能存在满二叉树的；
+当N == 1 那只有一个node，是没有子树的，直接创建返回即可；
+如果N > 1，则去掉根节点，即 N = N - 1，那么这个问题就化解为求所有的两个奇数的组合，这两个奇数的和等于 N - 1，比如拿N = 7来说明：
+对于7来说，去掉根节点，则可以分为
+1 + 5
+3 + 3
+5 + 1
+5作为子树，去掉根节点又可分为
+1 + 3
+3 + 1
+3作为子树，去掉根节点又可分为
+1 + 1
+所以 7 可以得到的满二叉树有
+1 + 5(1 + 3(1 + 1))
+1 + 5(3(1 + 1) + 1)
+3(1 + 1) + 3(1 + 1)
+5(1 + 3(1 + 1)) + 1
+5(3(1 + 1) + 1) + 1
+
+作者：laughing-pasteurnj3
+链接：https://leetcode-cn.com/problems/all-possible-full-binary-trees/solution/di-gui-qiu-jie-by-laughing-pasteurnj3/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+"""
+
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -44,7 +72,25 @@ class Solution:
         # 如果为偶数，那么直接返回[]
         if N & 1 == 0: return []
 
-        # 首先生成其最基础的方式同步状态，
+        """
+        对于7来说，去掉根节点，则可以分为
+        1 + 5
+        3 + 3
+        5 + 1
+        5作为子树，去掉根节点又可分为
+        1 + 3
+        3 + 1
+        3作为子树，去掉根节点又可分为
+        1 + 1
+        所以 7 可以得到的满二叉树有
+        1 + 5(1 + 3(1 + 1))
+        1 + 5(3(1 + 1) + 1)
+        3(1 + 1) + 3(1 + 1)
+        5(1 + 3(1 + 1)) + 1
+        5(3(1 + 1) + 1) + 1
+        
+        """
+
         def helper(n):
             if not n: yield None
             if n == 1:
