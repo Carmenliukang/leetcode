@@ -92,8 +92,10 @@ class FindElements:
         self._dfs(root)
 
     def _dfs(self, root):
+        # 生成一个新的树
         if not root:
             return
+        # 依照
         if root.left:
             root.left.val = 2 * root.val + 1
             self.val_dict[2 * root.val + 1] = True
