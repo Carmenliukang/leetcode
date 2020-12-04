@@ -46,6 +46,35 @@ key = 3
 
 """
 
+"""
+1. 代码解析：https://leetcode-cn.com/problems/delete-node-in-a-bst/solution/shan-chu-er-cha-sou-suo-shu-zhong-de-jie-dian-by-l/
+
+
+二叉搜索树的三个特性：
+1. 前序遍历为递增顺序
+
+def inorder(root):
+    return inorder(root.left) + [root.val] + inorder(root.right) if root else []
+
+2. Successor 代表的是中序遍历序列的下一个节点。即比当前节点大的最小节点，简称后继节点。 先取当前节点的右节点，然后一直取该节点的左节点，直到左节点为空，则最后指向的节点为后继节点。
+
+def successor(root):
+    root = root.right
+    while root.left:
+        root = root.left
+    return root
+
+3. Predecessor 代表的是中序遍历序列的前一个节点。即比当前节点小的最大节点，简称前驱节点。先取当前节点的左节点，然后取该节点的右节点，直到右节点为空，则最后指向的节点为前驱节点。
+
+def predecessor(root):
+    root = root.left
+    while root.right:
+        root = root.right
+    return root
+
+
+"""
+
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -81,4 +110,50 @@ class Solution:
         root = TreeNode(vals[m])
         root.left = self.create(vals, left, m)
         root.right = self.create(vals, m + 1, right)
+        return root
+
+
+class Solution1(object):
+    def successor(self, root):
+        """
+        One step right and then always left
+        """
+        root = root.right
+        while root.left:
+            root = root.left
+        return root.val
+
+    def predecessor(self, root):
+        """
+        One step left and then always right
+        """
+        root = root.left
+        while root.right:
+            root = root.right
+        return root.val
+
+    def deleteNode(self, root: TreeNode, key: int) -> TreeNode:
+        if not root:
+            return None
+
+        # delete from the right subtree
+        if key > root.val:
+            root.right = self.deleteNode(root.right, key)
+        # delete from the left subtree
+        elif key < root.val:
+            root.left = self.deleteNode(root.left, key)
+        # delete the current node
+        else:
+            # the node is a leaf
+            if not (root.left or root.right):
+                root = None
+            # the node is not a leaf and has a right child
+            elif root.right:
+                root.val = self.successor(root)
+                root.right = self.deleteNode(root.right, root.val)
+            # the node is not a leaf, has no right child, and has a left child
+            else:
+                root.val = self.predecessor(root)
+                root.left = self.deleteNode(root.left, root.val)
+
         return root
