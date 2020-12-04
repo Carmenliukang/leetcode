@@ -73,6 +73,7 @@ def predecessor(root):
     return root
 
 
+# https://leetcode-cn.com/problems/delete-node-in-a-bst/solution/shan-chu-er-cha-sou-suo-shu-zhong-de-jie-dian-by-l/
 """
 
 
@@ -114,6 +115,8 @@ class Solution:
 
 
 class Solution1(object):
+    # https://leetcode-cn.com/problems/delete-node-in-a-bst/solution/shan-chu-er-cha-sou-suo-shu-zhong-de-jie-dian-by-l/
+    # todo 这里需要更加仔细的看一下
     def successor(self, root):
         """
         One step right and then always left
