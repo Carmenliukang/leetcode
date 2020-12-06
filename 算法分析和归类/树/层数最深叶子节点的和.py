@@ -51,7 +51,7 @@ class Solution:
 
     def dfs(self, root, depth):
         """
-        这里是通过层序遍历获取结果
+        这里是通过层序遍历，然后获取最后的结果。
         :param root:
         :param depth:
         :return:
@@ -69,7 +69,7 @@ class Solution:
 
     def dfs1(self, root, depth):
         """
-        通过多个参数进行统计
+        通过依次记录其每一层的深度，还有其最终的节点。
         total 是每行的数据统计
         depth 是记录其深度
         :param root:
