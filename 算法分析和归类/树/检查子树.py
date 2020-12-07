@@ -58,6 +58,7 @@ class Solution:
         return self._dfs(t1, t2) or self.checkSubTree(t1.left, t2) or self.checkSubTree(t1.right, t2)
 
     def _dfs(self, t1, t2):
+        # 判断其两个树是否相同
         if not t2:
             return True
         if not t1:
