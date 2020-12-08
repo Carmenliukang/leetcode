@@ -91,5 +91,5 @@ class Solution:
         # 递归获取每一条路径。
         self.dfs(root.left, vals)
         self.dfs(root.right, vals)
-
+        # 这里需要删除其最后一个节点，因为需要保证是一个路径
         vals.pop()
