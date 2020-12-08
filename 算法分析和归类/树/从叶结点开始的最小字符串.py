@@ -80,6 +80,7 @@ class Solution:
         # 这里使用的是状态修改完成同步
         if not root:
             return 0
+
         # 这里是将数字转换成对应的字母
         vals.append(chr(root.val + ord('a')))
         # 如果是叶子节点，那么这条路就走完，进行对比
