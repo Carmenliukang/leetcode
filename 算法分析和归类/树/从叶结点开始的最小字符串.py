@@ -80,10 +80,12 @@ class Solution:
         # 这里使用的是状态修改完成同步
         if not root:
             return 0
-
+        # 这里是将数字对应的字母完成
         vals.append(chr(root.val + ord('a')))
+        # 如果是叶子节点，那么这条路就走完，进行对比
         if root.left is None and root.right is None:
             self.res = min(self.res, "".join(vals[::-1]))
+
         # 递归获取每一条路径。
         self.dfs(root.left, vals)
         self.dfs(root.right, vals)
