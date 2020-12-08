@@ -90,6 +90,7 @@ class Solution(object):
 
     def dfs(self, node):
         """
+        todo 完成系统调用方式同步
         # Return distance from node to target if exists, else -1
         # Vertex distance: the # of vertices on the path from node to target
         """
