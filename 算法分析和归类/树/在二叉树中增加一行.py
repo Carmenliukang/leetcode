@@ -77,7 +77,7 @@ class TreeNode:
 
 class Solution:
     def addOneRow(self, root: TreeNode, v: int, d: int) -> TreeNode:
-        # 对于 d 为1 的时候，需要替换 根节点
+        # 对于 d 为1 的时候，需要替换 根节点，所以做一个特殊的逻辑处理。
         if d == 1:
             result = TreeNode(v)
             result.left = root
@@ -93,7 +93,7 @@ class Solution:
             return None
 
         depth += 1
-
+        # 对于深度为该节点做一个特殊逻辑处理
         if depth == self.d - 1:
             # 节点进行替换
             left = root.left
