@@ -54,7 +54,7 @@ class TreeNode:
 
 class Solution:
     def __init__(self):
-        # 用于存储每一个节点的深度和父节点
+        # 用于存储每一个节点的深度和父节点，因为这里的节点 val 都是唯一数值。
         self.depth = {}
         self.parent = {}
 
