@@ -55,7 +55,7 @@ class TreeNode:
 
 
 class Solution:
-    # todo 这个题目的算法确实是非常的给力！有一种开阔眼界的感觉。
+    # todo 这个题目的算法确实是非常的给力！有一种开阔眼界的感觉。 给力
     def __init__(self):
         self.res = []
 
