@@ -123,3 +123,18 @@ class Solution:
         self.q_parent_dict[q] = 1
 
         return self.dfsparent(p, q)
+
+
+class SolutionMethod:
+    def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
+        parent_dict = {}
+        while p:
+            parent_dict[p] = 1
+            p = p.parent
+
+        while q:
+            if parent_dict.get(q):
+                break
+            q = q.parent
+
+        return q
