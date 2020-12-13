@@ -127,6 +127,7 @@ class Solution:
 
 class SolutionMethod:
     def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
+        # 判断其最开始的节点。
         parent_dict = {}
         while p:
             parent_dict[p] = 1
