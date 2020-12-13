@@ -88,3 +88,37 @@ class Solution:
 
         dfs(root)
         return ans
+
+
+class SolutionMethod:
+    def __init__(self):
+        self.res = 0
+
+    def longestConsecutive(self, root: TreeNode) -> int:
+        self.dfs(root)
+        return self.res
+
+    def dfs(self, root):
+        if not root:
+            # 这里也是需要返回结果。因为根节点为0
+            return 0, 0
+
+        inc, dcr = 1, 1
+
+        left_inc, left_dcr = self.dfs(root.left)
+        right_inc, right_dcr = self.dfs(root.right)
+
+        if root.left:
+            if root.val == root.left.val + 1:
+                inc = left_inc + 1
+            if root.val == root.left.val - 1:
+                dcr = left_dcr + 1
+
+        if root.right:
+            if root.val == root.right.val + 1:
+                inc = max(right_inc + 1, inc)
+            if root.val == root.right.val - 1:
+                dcr = max(right_dcr + 1, dcr)
+        # 计算以此节点为根节点的数据统计。
+        self.res = max(self.res, inc + dcr - 1)
+        return inc, dcr
