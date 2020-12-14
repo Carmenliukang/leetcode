@@ -69,6 +69,7 @@ class TreeNode:
 
 
 class Solution:
+    # todo https://leetcode-cn.com/problems/all-elements-in-two-binary-search-trees/solution/san-chong-jie-fa-by-supermanblues/
     def __init__(self):
         self.res = []
 
