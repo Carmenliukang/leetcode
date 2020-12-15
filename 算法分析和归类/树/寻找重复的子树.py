@@ -66,3 +66,22 @@ class Solution:
 
         lookup(root)
         return ans
+
+    def findDuplicateSubtreesMethod(self, root: TreeNode) -> list[TreeNode]:
+        count = Counter()
+
+        def lookup(node):
+            if not node:
+                return "#"
+            # 对于每一个子树都将其结果进行递归生成，然后同步
+            right = lookup(node.right)
+            left = lookup(node.left)
+            serial = "{},{},{}".format(node.val, left, right)
+            count[serial] += 1
+            if count[serial] == 2:
+                ans.append(node)
+            return serial
+
+        ans = []
+        lookup(root)
+        return ans
