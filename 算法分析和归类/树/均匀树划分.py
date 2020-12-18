@@ -71,6 +71,7 @@ class Solution:
     def dfs(self, root):
         if not root:
             return 0
+
         right = self.dfs(root.right)
         left = self.dfs(root.left)
         total = root.val + left + right
