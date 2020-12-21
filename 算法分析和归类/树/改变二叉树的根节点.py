@@ -69,10 +69,13 @@ class Solution:
             # 这里是为了防止成为环
             parent.left = None
         else:
+            # 对于根节点进行特殊逻辑处理
             if parent == self.root:
                 parent.right = None
             else:
+                # 将其左右子树进行调换
                 parent.right = parent.left
+                # 防止成为环
                 parent.left = None
 
         parent.parent = leaf
