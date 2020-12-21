@@ -57,7 +57,7 @@ class TreeNode:
 
 
 class Solution:
-    def splitBST(self, root: TreeNode, V: int) -> List[TreeNode]:
+    def splitBST(self, root: TreeNode, V: int) -> list[TreeNode]:
         if not root:
             return None, None
         elif root.val <= V:
