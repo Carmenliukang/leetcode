@@ -76,3 +76,17 @@ class Solution:
             self.rangeSumBST(root.right, low, high)
 
         return self.total
+
+
+class Solution1:
+    def inorderSuccessor(self, node: 'TreeNode') -> 'TreeNode':
+        # 使用了其左右的定义
+        if node.right:
+            node = node.right
+            while node.left:
+                node = node.left
+            return node
+
+        while node.parent and node.parent.right == node:
+            node = node.parent
+        return node.parent
