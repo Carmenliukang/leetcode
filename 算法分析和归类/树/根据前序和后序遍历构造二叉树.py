@@ -44,6 +44,7 @@ class Solution:
 
         if len(pre) == 1:
             return root
+
         # 因为这个是唯一的数值，所以这里才能够确定去唯一数值
         L = post.index(pre[1]) + 1
         root.left = self.dfs(pre[1:L + 1], post[:L])
