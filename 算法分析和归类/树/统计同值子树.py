@@ -40,13 +40,13 @@ class Solution:
         self.dfs(root, 0)
         return self.res
 
-    def dfs(self, parent, val):
-        # todo  这里需要注意使用的是父节点 的数值
-        if parent is None:
+    def dfs(self, node, val):
+        # 这里的 val 是父节点的同步尝试。
+        if node is None:
             return True
 
-        if not all([self.dfs(parent.left, parent.val), self.dfs(parent.right, parent.val)]):
+        if not all([self.dfs(node.left, node.val), self.dfs(node.right, node.val)]):
             return False
 
         self.res += 1
-        return parent.val == val
+        return node.val == val
