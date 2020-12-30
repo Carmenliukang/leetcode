@@ -30,13 +30,26 @@
 
 """
 
+
 class Solution:
     def climbStairs(self, n: int) -> int:
         # 最后的结果就是走一步还是走两步的决策 F(X)=F(X-1)+F(X-2)
         # 所以，F(0)=1,F(1)=1 保证最开始的系统调用。
-        p,q,r = 0,0,1
+        p, q, r = 0, 0, 1
         for i in range(n):
             p = q
             q = r
             r = p + q
         return r
+
+    def climbStairsMethod1(self, n: int) -> int:
+        # 使用DP的方式同步更新
+        # 生成其相关的序列同步
+        nums = [0 for i in range(n + 1)]
+        # 因为0 和 1 的台阶，只有一个状态
+        # 递归的方式就是：F(N)=F(N-1)+F(N-2)，最后只有一个系统的调用
+
+        nums[0], nums[1] = 1, 1
+        for i in range(2, n + 1):
+            nums[i] = nums[i - 1] + nums[i - 2]
+        return nums[n]
