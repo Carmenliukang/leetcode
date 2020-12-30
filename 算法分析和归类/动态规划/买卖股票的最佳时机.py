@@ -53,3 +53,16 @@ class Solution:
             min_num = min(prices[i], min_num)
 
         return res
+
+    def maxProfitMethod2(self, prices: list[int]) -> int:
+        # 确定所有的结果同步
+        if not prices:
+            return 0
+
+        res, min_num = 0, prices[0]
+
+        for i in range(1, len(prices)):
+            res = max(res, prices[i] - min_num)
+            min_num = min(prices[i], min_num)
+
+        return res
