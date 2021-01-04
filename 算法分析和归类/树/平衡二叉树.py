@@ -61,3 +61,19 @@ class Solution:
         else:
             return abs(get_hight(root.left) - get_hight(root.right)) <= 1 and self.isBalanced(
                 root.left) and self.isBalanced(root.right)
+
+    # 这种使用的是自底向上的递归方式，能够避免重复计算。
+    def isBalancedMethod1(self, root: TreeNode) -> bool:
+        return self.dfs(root) >= 0
+
+    def dfs(self, root):
+        if root is None:
+            return 0
+
+        left = self.dfs(root.left)
+        right = self.dfs(root.right)
+        # 为什么这里会优先判断其结果为-1，因为如果 -1 出现了一次，那么这个子树后面的循序也一定为-1
+        if left == -1 or right == -1 or abs(left - right) > 1:
+            return -1
+        else:
+            return max(left, right) + 1
