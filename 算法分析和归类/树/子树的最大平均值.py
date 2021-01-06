@@ -55,6 +55,7 @@ class Solution:
         return self.max_res
 
     def dfs(self, root):
+        # 使用自底向上的方式去判断，这里其实需要的就是判断这里的反思结果
         if root is None:
             return 0, 0
         left_total, left_num = self.dfs(root.left)
