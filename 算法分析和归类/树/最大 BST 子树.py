@@ -89,7 +89,7 @@ class SolutionMthod:
 
     def dfs(self, root):
         if root is None:
-            # 如果为0，那么就将最小的结果设置为最大int，因为这里需要判断这里的结果
+            # 如果为0，那么就将最小的结果设置为最大int，因为需要对结果进行同步
             return float("inf"), float("-inf"), 0
 
         l_min, l_max, l_num = self.dfs(root.left)
