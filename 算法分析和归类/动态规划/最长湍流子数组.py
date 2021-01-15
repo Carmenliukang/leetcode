@@ -37,7 +37,27 @@
 链接：https://leetcode-cn.com/problems/longest-turbulent-subarray
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-
-todo 20210114 算法题目
 """
 
+
+class Solution:
+    # 这里使用的状态是修改具体的场景。
+    def maxTurbulenceSize(self, arr: list[int]) -> int:
+        if not arr:
+            return 0
+
+        if len(arr) == 1:
+            return 1
+        size = len(arr)
+        # 这里显示的问题是
+        dp = [[1] * 2 for i in range(size)]
+        # 这里是最大的结果数值
+        max_size = 0
+        for i in range(1, size):
+            if arr[i] > arr[i - 1]:
+                dp[i][0] = dp[i - 1][1] + 1
+            elif arr[i] < arr[i - 1]:
+                dp[i][1] = dp[i - 1][0] + 1
+            max_size = max(max_size, *dp[i])
+
+        return max_size
