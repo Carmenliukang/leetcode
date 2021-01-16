@@ -31,7 +31,7 @@
 链接：https://leetcode-cn.com/problems/count-sorted-vowel-strings
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-
+todo 修改
 """
 
 import math
@@ -40,3 +40,18 @@ import math
 class Solution:
     def countVowelStrings(self, n: int) -> int:
         return math.comb(n + 4, 4)
+
+
+class Solution1(object):
+    def maxTurbulenceSize(self, A):
+        N = len(A)
+        ans = 1
+        anchor = 0
+
+        for i in range(1, N):
+            c = cmp(A[i - 1], A[i])
+            if i == N - 1 or c * cmp(A[i], A[i + 1]) != -1:
+                if c != 0:
+                    ans = max(ans, i - anchor + 1)
+                anchor = i
+        return ans
