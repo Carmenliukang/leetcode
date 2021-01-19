@@ -32,7 +32,7 @@ class Solution:
 
         return ans
 
-    def countBitsMethod3(self, num: int) -> list[int]:
+    def countBitsMethod1(self, num: int) -> list[int]:
         # 这里使用最高位置是其他的位置进行分析和统计
         ans = [0 for i in range(num + 1)]
         ans[0] = 0
@@ -40,3 +40,19 @@ class Solution:
             ans[i] = ans[i & (i - 1)] + 1
 
         return ans
+
+    def countBitsMethod2(self, num: int) -> list[int]:
+        # 这里使用动态规划的方式同步
+        # 偶数，左移然后+0。例如：4，2，0 >>> 100,10,0
+        # 基数，左移然后+1。例如：5，3，1 >>> 101,11,1
+
+        # 这位大佬的资料：
+        # https://leetcode-cn.com/problems/counting-bits/solution/python3-si-chong-fang-fa-jie-jue-bi-te-wei-ji-shu-/
+
+        dp = [0] * (num + 1)
+        for i in range(num // 2 + 1):
+            dp[2 * i] = dp[i]
+            if 2 * i + 1 <= num:
+                dp[2 * i + 1] = dp[i] + 1
+
+        return dp
