@@ -68,5 +68,4 @@ class Solution:
             else:
                 total += (n - 1) / 2 + 1
                 n = (n - 1) / 2
-
         return int(total)
