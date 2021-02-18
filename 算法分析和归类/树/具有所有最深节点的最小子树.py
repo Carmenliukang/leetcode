@@ -26,6 +26,7 @@ https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/01/sketch1.png
 
 输入：root = [1]
 输出：[1]
+
 解释：根节点是树中最深的节点。
 
 示例 3：
@@ -79,3 +80,22 @@ class Solution:
             return node if L and R else L or R
 
         return answer(root)
+
+
+class Solution1:
+    def lcaDeepestLeaves(self, root: TreeNode) -> TreeNode:
+        return self.dfs(root)
+
+    def dfs(self, root):
+        if self.high(root.left) == self.high(root.right):
+            return root
+        elif self.high(root.left) >= self.high(root.right):
+            return self.dfs(root.left)
+        else:
+            return self.dfs(root.right)
+
+    def high(self, root):
+        if root is None:
+            return 0
+
+        return max(self.high(root.left), self.high(root.right)) + 1
