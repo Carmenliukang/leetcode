@@ -83,7 +83,7 @@ class Solution:
     def dfs(self, root):
         if root is None:
             # todo 这里非常的重要，因为第一次返回的时候，需要让他的下一次 递归能够同步到最终结果。
-            return float("inf"),float("-inf"), 0
+            return float("inf"), float("-inf"), 0
 
         rmin, rmax, r_sum = self.dfs(root.right)
         lmin, lmax, l_sum = self.dfs(root.left)
@@ -94,11 +94,12 @@ class Solution:
 
         return float("-inf"), float("inf"), 0
 
-    def check(self,root,min_l,max_r):
+    def check(self, root, min_l, max_r):
         # 判断是否为二叉树
         if root is None:
             return True
 
-        return min_l<root.val<max_r and self.check(root.left,min_l,root.val) and self.check(root.right,root.val,max_r)
+        return min_l < root.val < max_r and self.check(root.left, min_l, root.val) and self.check(root.right, root.val,
+                                                                                                  max_r)
 
 # leetcode submit region end(Prohibit modification and deletion)
