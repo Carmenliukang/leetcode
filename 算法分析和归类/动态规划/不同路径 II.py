@@ -46,7 +46,7 @@ obstacleGrid[i][j] 为 0 或 1
 
 
 class Solution:
-    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+    def uniquePathsWithObstacles(self, obstacleGrid: list[list[int]]) -> int:
         m, n = len(obstacleGrid), len(obstacleGrid[0])
         dp = [[0] * n for _ in range(m)]
         if obstacleGrid[0][0] != 1:
