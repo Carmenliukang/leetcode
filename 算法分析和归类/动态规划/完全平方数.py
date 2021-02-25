@@ -36,6 +36,21 @@ import math
 
 class Solution:
     def numSquares(self, n: int) -> int:
+        """
+        标签：动态规划
+        首先初始化长度为 n+1 的数组 dp，每个位置都为 0
+        如果 n 为 0，则结果为 0
+        对数组进行遍历，下标为 i，每次都将当前数字先更新为最大的结果，即 dp[i]=i，比如 i=4，最坏结果为 4=1+1+1+1 即为 4 个数字
+        todo 这里的说明非常的赞
+        动态转移方程为：dp[i] = MIN(dp[i], dp[i - j * j] + 1)，i 表示当前数字，j*j 表示平方数
+        时间复杂度：O(n*sqrt(n))O(n∗sqrt(n))，sqrt 为平方根
+
+        作者：guanpengchn
+        链接：https://leetcode-cn.com/problems/perfect-squares/solution/hua-jie-suan-fa-279-wan-quan-ping-fang-shu-by-guan/
+        来源：力扣（LeetCode）
+        著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+        """
         square_nums = [i ** 2 for i in range(0, int(math.sqrt(n)) + 1)]
 
         dp = [float('inf')] * (n + 1)
