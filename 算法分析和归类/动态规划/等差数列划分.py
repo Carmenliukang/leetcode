@@ -42,7 +42,7 @@ class Solution:
         total = len(A)
         if total < 3:
             return 0
-        # 这里的定义是以 A[i] 结尾的数据
+        # 这里的定义是以 A[i] 结尾的数据的数据
         dp = [0 for _ in range(total)]
         for i in range(2, total):
             if A[i] - A[i - 1] == A[i - 1] - A[i - 2]:
