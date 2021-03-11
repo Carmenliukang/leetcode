@@ -49,7 +49,8 @@ class Solution:
 
         max_len = 1
         start = 0
-
+        # 这里需要思考的问题就是，核心还是 s[i] == s[j] or s[i] != s[j]
+        # 同时因为 回文， i,j 只与 i+1,j-1 有关系
         for j in range(1, size):
             for i in range(0, j):
                 if s[i] == s[j]:
