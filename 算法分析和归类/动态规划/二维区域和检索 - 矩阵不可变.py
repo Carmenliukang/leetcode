@@ -46,6 +46,7 @@ class NumMatrix:
 
     def _total_martix(self):
         m, n = len(self.martix), len(self.martix[0]) if self.martix else 0
+        # 边长大于1的原因是 为了规避很多判断。比如 开始位置和结束位置是同一个位置。
         dp = [[0] * (n + 1) for _ in range(m + 1)]
         # 这生成的是最基本的方式
         for i in range(m):
@@ -57,4 +58,3 @@ class NumMatrix:
         # 这里需要注意的是生成相关的账号同步
         total = self.dp[row2 + 1][col2 + 1] - self.dp[row2 + 1][col1] - self.dp[row1][col2 + 1] + self.dp[row1][col1]
         return total
-
