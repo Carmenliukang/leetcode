@@ -33,6 +33,7 @@ class Solution:
 
         maxdp[0] = mindp[0] = nums[0]
         for i in range(1, size):
+            # 依次对其进行判断总结。
             maxdp[i] = max(maxdp[i - 1] * nums[i], max(nums[i], mindp[i - 1] * nums[i]))
             mindp[i] = min(mindp[i - 1] * nums[i], min(nums[i], maxdp[i - 1] * nums[i]))
 
