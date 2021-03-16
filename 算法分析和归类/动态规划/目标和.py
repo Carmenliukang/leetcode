@@ -37,7 +37,7 @@
 
 
 class Solution:
-    def findTargetSumWays(self, nums: List[int], S: int) -> int:
+    def findTargetSumWays(self, nums: list[int], S: int) -> int:
         size = len(nums)
         dp = [[0] * 2001 for _ in range(size)]
 
@@ -72,7 +72,7 @@ class Solution:
         for i in range(1, size):
             for j in range(-1000, 1000):
                 if dp[i - 1][j + 1000] > 0:
-                    dp[i][j + nums[i] + 1000] += dp[i - 1][j + 1000];
-                    dp[i][j - nums[i] + 1000] += dp[i - 1][j + 1000];
+                    dp[i][j + nums[i] + 1000] += dp[i - 1][j + 1000]
+                    dp[i][j - nums[i] + 1000] += dp[i - 1][j + 1000]
 
         return dp[size - 1][S + 1000] if S <= 1000 else 0
