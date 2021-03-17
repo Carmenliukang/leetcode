@@ -56,5 +56,7 @@ class Solution:
 
         for i in range(1, m):
             for j in range(1, n):
+                # 因为这里 i,j 一定是包含的，所以需要努力同步提升一下
                 nums[i][j] = min(nums[i - 1][j], nums[i][j - 1]) + grid[i][j]
+
         return nums[-1][-1]
