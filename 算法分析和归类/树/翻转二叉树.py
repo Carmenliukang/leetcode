@@ -56,7 +56,7 @@ class Solution:
 class SolutionMethod1:
     def invertTree(self, root: TreeNode) -> TreeNode:
         if not root:
-            return
+            return root
 
         # 当前节点的开始阶段的设置
         # 以左右子树的方式计算
