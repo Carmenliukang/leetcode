@@ -128,21 +128,17 @@ def knapsack_0_1(W, N, wt, val):
     :param val: list[int] 每个物品的价值
     :return: int 最大价值的数量
     """
-    dp = [[0]*(W+1) for _ in range(N+1)]
+    dp = [[0] * (W + 1) for _ in range(N + 1)]
 
     for i in range(N):
         for j in range(W):
             # 这里有边界问题，因为可能小于0的情况
-            if j-wt[i-1]<0:
+            if j - wt[i - 1] < 0:
                 dp[i][j] = dp[i - 1][j]
             else:
                 dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - wt[i - 1]] + val[i - 1])
 
     return dp[N][W]
-
-
-
-    return 0
 
 
 if __name__ == '__main__':
