@@ -1,6 +1,5 @@
 # 算法刷题记录
->[![DoUaXq.jpg](https://s3.ax1x.com/2020/12/02/DoUaXq.jpg)](https://imgchr.com/i/DoUaXq)
-
+>![](https://github.com/Carmenliukang/leetcode/blob/master/image/0.jpg)
 ## 规划
 提升自己的算法能力
 
