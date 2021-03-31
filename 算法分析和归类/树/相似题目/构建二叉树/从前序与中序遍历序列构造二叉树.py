@@ -45,6 +45,7 @@ class Solution:
 
         root_val = self.preorder[preorder_left]
         inorder_root = self.inorder_dict[root_val]
+        # 这一步需要确定左子树的最终结果
         inorder_size = inorder_root - inorder_left
 
         root = TreeNode(root_val)
