@@ -26,3 +26,42 @@
 
 todo
 """
+
+
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def buildTree(self, inorder: list[int], postorder: list[int]) -> TreeNode:
+        # 通过拆分最初的节点同步数据
+        self.inorder_dict = {val: index for index, val in enumerate(inorder)}
+
+        self.inorder = inorder
+        self.postorder = postorder
+
+        size = len(inorder)
+
+        root = self.dfs(0, size - 1, 0, size - 1)
+        return root
+
+    def dfs(self, inorder_left, inorder_right, postorder_left, postorder_right):
+        if inorder_left > inorder_right or postorder_left > postorder_right:
+            return None
+        # 后序遍历的最后一个节点就是 根结点，然后将前序遍历中的根结点位置，拆分成左右子树，然后依次进行遍历循环
+        val = self.postorder[postorder_right]
+        left_index = self.inorder_dict[val]
+        # 获取左子树的长度
+        left_size = left_index - inorder_left
+        # 构建树
+        root = TreeNode(val)
+        # 这里需要注意，最左边的数据都需要加上 对应的 inorder_left postorder_left ，因为在递归中这里可能会不为0。
+        root.left = self.dfs(inorder_left, inorder_left + left_size - 1, postorder_left, postorder_left + left_size - 1)
+        root.right = self.dfs(inorder_left + left_size + 1, inorder_right, postorder_left + left_size,
+                              postorder_right - 1)
+
+        return root
