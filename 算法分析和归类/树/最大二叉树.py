@@ -59,6 +59,7 @@ class Solution:
         root.left = self.create_largest_tree(nums, left, mid)
         root.right = self.create_largest_tree(nums, mid + 1, right)
 
+
         return root
 
     def get_max_id(self, nums, left, right):
