@@ -58,3 +58,47 @@ class Solution:
         if min_len <= self.lenght:
             self.lenght = min_len
             self.res = root.val
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class SolutionMethod1:
+    def __init__(self):
+        self.nums = []
+
+    def closestValue(self, root: TreeNode, target: float) -> int:
+        self.dfs(root)
+        total = len(self.nums)
+        if total == 1:
+            return self.nums[-1]
+
+        nums_max = float("inf")
+        result = 0
+        for i in range(0, total - 1):
+            left = abs(self.nums[i] - target)
+            right = abs(self.nums[i + 1] - target)
+            if left < nums_max:
+                nums_max = left
+                result = self.nums[i]
+
+            if right < nums_max:
+                nums_max = right
+                result = self.nums[i + 1]
+
+        return result
+
+    def dfs(self, root):
+        if root is None:
+            return
+
+        self.dfs(root.left)
+        self.nums.append(root.val)
+        self.dfs(root.right)
+
+        return
+
+
