@@ -44,7 +44,7 @@ class Solution:
     def dfs(self, root):
         if not root:
             return
-
+        # 这个的抽象化 有一些高
         left = self.dfs(root.left)
         right = self.dfs(root.right)
 

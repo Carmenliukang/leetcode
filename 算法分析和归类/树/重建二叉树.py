@@ -54,3 +54,32 @@ class Solution:
         root.left = self.dfs(preorder, inorder[:mid])
         root.right = self.dfs(preorder, inorder[mid + 1:])
         return root
+
+
+class SolutionMehod:
+    def buildTree(self, preorder: list[int], inorder: list[int]) -> TreeNode:
+        # 设置成 函数变量，减少函数传输
+        self.preorder = preorder
+        self.inorder = inorder
+
+        self.inorder_dict = {}
+        for place, val in enumerate(inorder):
+            self.inorder_dict[val] = place
+        # 这里的边界问题需要注意，边界是 n-1，不是n
+        root = self.dfs(0, len(preorder) - 1, 0, len(inorder) - 1)
+
+        return root
+
+    def dfs(self, pre_left, pre_right, in_left, in_right):
+        if pre_left > pre_right:
+            return
+
+        in_root = self.inorder_dict.get(self.preorder[pre_left])
+        # 确定左子树 数量
+        left_num = in_root - in_left
+
+        root = TreeNode(self.preorder[pre_left])
+        # 这里需要在 中序遍历 的 最后节点进行判断 需要注意
+        root.left = self.dfs(pre_left + 1, pre_left + left_num, in_left, in_root - 1)
+        root.right = self.dfs(pre_left + left_num + 1, pre_right, in_root + 1, in_right)
+        return root

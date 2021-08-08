@@ -29,3 +29,13 @@ class Solution:
             max_total = max(max_total, pre)
 
         return max_total
+
+    def maxSubArrayMethod1(self, nums: list[int]) -> int:
+        totals = []
+        pre = 0
+        for i in nums:
+            # 这里使用的就是计算从每一个相关的节点同步
+            pre = max(pre + i, i)
+            totals.append(pre)
+
+        return max(totals)
