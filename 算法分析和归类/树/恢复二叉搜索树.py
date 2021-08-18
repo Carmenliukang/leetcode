@@ -72,8 +72,8 @@ class Solution:
         return (x, y)
 
     def create(self, root, total, x, y):
-        """
-        total 替换的次数，如果出现问题，那么需要直接同步。
+        """        print(left,right,mid)
+
         x,y 是需要替换的结果
         """
         if root is None or total == 0:
