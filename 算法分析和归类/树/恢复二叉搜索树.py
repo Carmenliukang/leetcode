@@ -29,4 +29,60 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 """
-# todo 这里需要再看一下。
+
+
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def __init__(self) -> None:
+        self.nums = []
+
+    def recoverTree(self, root: TreeNode) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        self.dfs(root)
+        x, y = self.check()
+        root = self.create(root, 2, x, y)
+        return root
+
+    def dfs(self, root):
+        if root is None:
+            return
+        self.dfs(root.left)
+        self.nums.append(root.val)
+        self.dfs(root.right)
+        return
+
+    def check(self):
+        size = len(self.nums)
+
+        x = y = -1
+        for i in range(size - 1):
+            if self.nums[i + 1] < self.nums[i]:
+                y = self.nums[i + 1]
+                if x == -1:
+                    x = self.nums[i]
+        return (x, y)
+
+    def create(self, root, total, x, y):
+        """
+        total 替换的次数，如果出现问题，那么需要直接同步。
+        x,y 是需要替换的结果
+        """
+        if root is None or total == 0:
+            return
+
+        if root.val == x or root.val == y:
+            total -= 1
+            root.val = y if root.val == x else x
+        self.create(root.left, total, x, y)
+        self.create(root.right, total, x, y)
+
+        return root
