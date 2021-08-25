@@ -29,16 +29,23 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def verifyPreorder(self, preorder: list[int]) -> bool:
+        # 整体使用单调栈方式同步
+        # root.left.val < root.val < root.right.val
+        # 左子树 最大值 < 右子树 最小值 Max(left)<Min(right)
+        # 使用单调栈方式一直获取 左子树的最大值
+        # 整体偏向逻辑 向上
         stack = []
         val = float('-inf')
         for i in preorder:
-            if i < val: return False
+            if i < val:
+                return False
+            # 左子树 的
             while stack and stack[-1] < i:
                 val = stack.pop()
             stack.append(i)
         return True
 
-    def verifyPreorderMethod(self, preorder: List[int]) -> bool:
+    def verifyPreorderMethod(self, preorder: list[int]) -> bool:
         # 这种方式会超时 timeout , 所以需要再换一种方式
         size = len(preorder)
         for i in range(size - 1):
@@ -51,4 +58,9 @@ class Solution:
 
         return True
 
+
 # leetcode submit region end(Prohibit modification and deletion)
+
+# succ [5,2,1,3,6]
+# err [5, 2, 6, 1, 3]
+Solution().verifyPreorder([5, 2, 1, 3, 6])
