@@ -36,7 +36,6 @@ class TreeNode:
 class Solution:
     def sortedListToBST(self, head: ListNode) -> TreeNode:
         nums = self.getall(head)
-        print(nums)
         root = self.create(nums)
         return root
 
@@ -48,6 +47,22 @@ class Solution:
             head = head.next
         return nums
 
+    # 这里是一种优化方式，可以节省一些时间。
+    def get_mid(self, head):
+        fast, slow = head, head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+
+    def get_high(self, head):
+        high = 0
+        cur = head
+        while cur:
+            high += 1
+            cur = cur.next
+        return high
+
     # 生成二叉树
     def create(self, nums):
         if not nums:
@@ -55,6 +70,7 @@ class Solution:
 
         mid = len(nums) // 2
         root = TreeNode(nums[mid])
+        # 这个是直接通过左右子树进行同步
         root.left = self.create(nums[:mid])
         root.right = self.create(nums[mid + 1:])
         return root
