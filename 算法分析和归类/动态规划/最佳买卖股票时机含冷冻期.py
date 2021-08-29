@@ -20,6 +20,8 @@
 
 """
 
+from typing import List
+
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
@@ -27,9 +29,15 @@ class Solution:
             return 0
 
         size = len(prices)
-        # 无股票 非冷冻期
-        # 无股票 冷冻期
-        # 有股票
+
+        # 首先明确状态
+        # 明确状态转换
+        # 明确基本base case
+        # 函数 方程确定
+
+        # 第一位：无股票 非冷冻期
+        # 第二位：无股票 冷冻期
+        # 第三位：有股票
         dp = [[0, 0, 0] for i in range(size)]
         dp[0] = [0, 0, -prices[0]]
         for i in range(1, size):
