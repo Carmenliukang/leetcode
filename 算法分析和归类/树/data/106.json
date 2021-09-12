@@ -1,0 +1,127 @@
+{
+  "nodes": [
+    {
+      "name": "-",
+      "ticker_type": 1,
+      "depth": 0
+    },
+    {
+      "name": "-",
+      "ticker_type": 3,
+      "depth": 1
+    },
+    {
+      "name": "-",
+      "ticker_type": 109,
+      "depth": 2
+    },
+    {
+      "name": "推送签收数据给UI",
+      "ticker_type": 1,
+      "depth": 3
+    },
+    {
+      "name": "PushAdminOpenCabinetsPage",
+      "ticker_type": 107,
+      "depth": 4,
+      "leaf_arguments": "e30="
+    },
+    {
+      "name": "ResetTime",
+      "ticker_type": 107,
+      "depth": 4,
+      "leaf_arguments": "eyJ0aW1lcl9uYW1lIjoiUHVzaFBhZ2VEZWxheVRpbWUifQ=="
+    },
+    {
+      "name": "delay push freq",
+      "ticker_type": 16,
+      "depth": 4
+    },
+    {
+      "name": "-",
+      "ticker_type": 15,
+      "depth": 5
+    },
+    {
+      "name": "-",
+      "ticker_type": 16,
+      "depth": 6
+    },
+    {
+      "name": "IsTime",
+      "ticker_type": 108,
+      "depth": 7,
+      "leaf_arguments": "eyJ0aW1lcl9uYW1lIjoiUHVzaFBhZ2VEZWxheVRpbWUiLCJkdXJhdGlvbiI6NTAwfQ=="
+    },
+    {
+      "name": "-",
+      "ticker_type": 109,
+      "depth": 2
+    },
+    {
+      "name": "处理UI输入数据",
+      "ticker_type": 1,
+      "depth": 3
+    },
+    {
+      "name": "NextFaceMessage",
+      "ticker_type": 107,
+      "depth": 4,
+      "leaf_arguments": "e30="
+    },
+    {
+      "name": "处理用户输入",
+      "ticker_type": 3,
+      "depth": 4
+    },
+    {
+      "name": "UserInputFinishAdminOpenCabinets",
+      "ticker_type": 107,
+      "depth": 5,
+      "leaf_arguments": "e30="
+    },
+    {
+      "name": "任务结束",
+      "ticker_type": 16,
+      "depth": 2
+    },
+    {
+      "name": "-",
+      "ticker_type": 15,
+      "depth": 3
+    },
+    {
+      "name": "-",
+      "ticker_type": 16,
+      "depth": 4
+    },
+    {
+      "name": "IsAdminOpenCabinetsTaskFinish",
+      "ticker_type": 108,
+      "depth": 5,
+      "leaf_arguments": "e30="
+    }
+  ],
+  "checksum": [
+    152,
+    8,
+    102,
+    209,
+    132,
+    30,
+    44,
+    52,
+    96,
+    20,
+    87,
+    117,
+    206,
+    44,
+    222,
+    203,
+    146,
+    27,
+    180,
+    75
+  ]
+}
