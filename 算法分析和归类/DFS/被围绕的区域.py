@@ -57,6 +57,7 @@ class Solution:
             dfs(x, y + 1)
             dfs(x, y - 1)
 
+        # 通过确定边界，然后进行策略修改。
         for i in range(n):
             dfs(i, 0)
             dfs(i, m - 1)
