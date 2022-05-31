@@ -59,7 +59,7 @@
 
 """
 
-
+from tying import Optional
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -119,11 +119,27 @@ class Solution:
 
         return node1
 
+    def getIntersectionNodeMethod2(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        nodeMap = {}
+
+        if not headA or not headB:
+            return headA or headB
+
+        while headA:
+            nodeMap[headA] = headA
+            headA = headA.next
+
+        while headB:
+            if nodeMap.get(headB):
+                return headB
+            headB = headB.next
+
+        return None
+
 
 """
-这里使用的方法是：空间换时间，三次遍历的方式进行循环调用
+这里使用的方法是：空间换时间，三次遍历的方式进行循环调用，这部分可以将其优化使用dict 快速匹配。
 
 先将相关的方式同步到位，然后进行遍历最后的结果同步。
-
 
 """
