@@ -7,13 +7,13 @@
 # @Software: PyCharm
 
 """
-给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中 没有重复出现 的数字。
+给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中 没有重复出现 的数字。
 
-示例 1:
+示例 1:
 
 输入: 1->2->3->3->4->4->5
 输出: 1->2->5
-示例 2:
+示例 2:
 
 输入: 1->1->1->2->3
 输出: 2->3
@@ -27,9 +27,9 @@
 
 # Definition for singly-linked list.
 class ListNode:
-    def __init__(self, x):
+    def __init__(self, x=0, next=None):
         self.val = x
-        self.next = None
+        self.next = next
 
 
 class Solution:
@@ -58,5 +58,23 @@ class Solution:
                     b = b.next
                 a.next = b.next
                 b = b.next
+
+        return root.next
+
+    def deleteDuplicatesMethod1(self, head: ListNode) -> ListNode:
+
+        if head is None:
+            return head
+
+        root: ListNode = ListNode(next=head)
+        cur = root
+        while cur.next and cur.next.next:
+            if cur.next.val == cur.next.next.val:
+                val = cur.next.val
+                # 这部分会产生孤儿节点
+                while cur.next and cur.next.val == val:
+                    cur.next = cur.next.next
+            else:
+                cur = cur.next
 
         return root.next
