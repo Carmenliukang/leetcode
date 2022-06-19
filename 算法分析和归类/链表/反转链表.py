@@ -47,7 +47,7 @@ class Reverse(object):
             return head
 
         # 子问题
-        # 递归方式解决
+        # 递归方式解决，这里是后续遍历
         head_next = self.reverseListRecursive(head.next)
 
         # 子问题，将子节点的对象，放到最后的位置
@@ -58,7 +58,7 @@ class Reverse(object):
 
     def reverseList(self, head: ListNode):
         """
-        这里遍历方法，将其每一个数据进行同步
+        这里递归方法，将其每一个数据进行同步
         :param head: LNode 实例
         :return: LNode or None
         """
@@ -75,6 +75,8 @@ class Reverse(object):
 
         while tmp:
             # 将相关的指针指针进行翻转
+            # tmp 下一个node
+            # cur head 下一个节点的位置
             cur = tmp.next
             tmp.next = pre
 
@@ -82,3 +84,21 @@ class Reverse(object):
             tmp = cur
 
         return pre
+
+    def reverseListError(self, head: ListNode) -> ListNode:
+        # 这个是一个错误的解法，这个错误的点在于 生成一个新的 ListNode 其实应该是 返回 cur指针，而不是新的 root节点
+        # 因为 初始值是None，这个没有 指向下一个节点。同时生成的 ListNode，最后一个节点就是 Head 节点
+        if head is None:
+            return head
+
+        cur = None
+        root = cur
+        while head:
+            print(f"{head.val=}")
+            node = head.next
+            head.next = cur
+
+            cur = head
+            head = node
+
+        return root
