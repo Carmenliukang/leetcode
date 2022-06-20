@@ -56,3 +56,21 @@ class Solution:
                 return False
 
         return True
+
+
+    def isPalindromeMethod1(self, head: ListNode) -> bool:
+        """
+        先遍历链表，然后再进行判断
+            空间复杂度O(n)
+            时间复杂度O(n)
+        :param head: 单链表
+        :return: bool True False
+        """
+        res = []
+        total = 0
+        while head:
+            total += 1
+            res.append(head.val)
+            head = head.next
+        # 这里使用了双指针的方式，将其链表进行反转
+        return res==res[::-1]
