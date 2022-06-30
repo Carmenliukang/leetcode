@@ -60,3 +60,41 @@ class Solution:
         if not r:
             return l
         return root
+
+from typing import Optional
+
+class Solution1:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        # 这种情况处理的是 非结构化的 树结构同步
+        
+        # 1. 分别获取 root >>> ndoe 的path
+        # 2. 双指针 从 根节点 判断共同的 数值，然后找到不相同的上一个 node 就是最近的公共节点。
+        p_path = self.dfs(root,p,[])
+        q_path = self.dfs(root,q,[])
+        
+        if p in q_path and p not in q_path:
+            return p
+        elif p not in q_path and p in q_path:
+            return q
+        else:
+            num = min(len(q_path),len(p_path))
+            res = root
+            for i in range(1,num):
+                if p_path[i]==q_path[i]:
+                    res=p_path[i]
+            return res
+    
+    # 找到root>>>node 的path
+    def dfs(self,root:Optional[TreeNode],node:TreeNode,path:list[TreeNode]) -> list[TreeNode]:
+        if root is None and node not in path:
+            return []
+        if node in path:
+            return path
+
+        path.append(root)
+
+        return self.dfs(root.left,node,path[:]) or self.dfs(root.right,node,path[:])
+
+
+
+
