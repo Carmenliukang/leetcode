@@ -38,13 +38,19 @@
 # Definition for a binary tree node.
 
 from typing import Optional
+from collections import deque
+
+
+# Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
+
 class Solution:
-    def maxDepth(self, root: Optional[TreeNode]) -> int:
+    def maxDepthMethod1(self, root: Optional[TreeNode]) -> int:
         def dfs(node: Optional[TreeNode] = None, depth: int = 0) -> int:
             if node is None:
                 return depth
@@ -57,4 +63,28 @@ class Solution:
 
         max_depth: int = dfs(root)
         return max_depth
+
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        def bfs(queue: deque) -> int:
+            # BFS
+            # 这里需要一个 queue, 然后每次都 遍历其中 每层的 child node.
+            max_depth = 0
+            while queue:
+                tmp_size = len(queue)
+                for i in range(tmp_size):
+                    node = queue.popleft()
+                    if node.left:
+                        queue.append(node.left)
+                    if node.right:
+                        queue.append(node.right)
+                max_depth += 1
+
+            return max_depth
+        if not root:
+            return 0
+        queues = deque()
+        queues.append(root)
+        max_depth = bfs(queue=queues)
+        return max_depth
+
 # leetcode submit region end(Prohibit modification and deletion)
