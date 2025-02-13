@@ -29,8 +29,6 @@
 
 ![](https://raw.githubusercontent.com/Carmenliukang/leetcode/master/images/unique-paths-ii-2.png)
 
-![](https://raw.githubusercontent.com/Carmenliukang/leetcode/master/images/unique-paths-ii-2.png)
-
 ```
 输入：obstacleGrid = [[0,1],[0,0]]
 输出：1
