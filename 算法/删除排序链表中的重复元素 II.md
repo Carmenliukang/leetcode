@@ -6,7 +6,7 @@
 
 示例 1：
 
-![](https://github.com/Carmenliukang/leetcode/blob/master/images/remove-duplicates-from-sorted-list-ii-1.png)
+![](https://raw.githubusercontent.com/Carmenliukang/leetcode/master/images/remove-duplicates-from-sorted-list-ii-1.png)
 
 ```
 输入：head = [1,2,3,3,4,4,5]
@@ -15,7 +15,7 @@
 
 示例 2：
 
-![](https://github.com/Carmenliukang/leetcode/blob/master/images/remove-duplicates-from-sorted-list-ii-2.png)
+![](https://raw.githubusercontent.com/Carmenliukang/leetcode/master/images/remove-duplicates-from-sorted-list-ii-2.png)
 
 ```
 输入：head = [1,1,1,2,3]

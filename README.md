@@ -1,5 +1,5 @@
 # 算法刷题记录
->![](https://github.com/Carmenliukang/leetcode/blob/master/images/0.jpg)
+>![](https://raw.githubusercontent.com/Carmenliukang/leetcode/master/images/0.jpg)
 
 ## 规划
 提升自己的算法能力

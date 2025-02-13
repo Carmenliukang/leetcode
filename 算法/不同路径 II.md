@@ -13,7 +13,7 @@
 
 示例 1：
 
-![](https://github.com/Carmenliukang/leetcode/blob/master/images/unique-paths-ii-1.png)
+![](https://raw.githubusercontent.com/Carmenliukang/leetcode/master/images/unique-paths-ii-1.png)
 
 ```
 输入：obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
@@ -27,7 +27,9 @@
 
 示例 2：
 
-![](https://github.com/Carmenliukang/leetcode/blob/master/images/unique-paths-ii-2.png)
+![](https://raw.githubusercontent.com/Carmenliukang/leetcode/master/images/unique-paths-ii-2.png)
+
+![](https://raw.githubusercontent.com/Carmenliukang/leetcode/master/images/unique-paths-ii-2.png)
 
 ```
 输入：obstacleGrid = [[0,1],[0,0]]
