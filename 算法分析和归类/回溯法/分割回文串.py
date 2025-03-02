@@ -25,6 +25,7 @@ class Solution:
     # todo https://leetcode-cn.com/problems/palindrome-partitioning/solution/hui-su-you-hua-jia-liao-dong-tai-gui-hua-by-liweiw/
     # 这里增加了相关的说明
     def partition(self, s: str) -> list[list[str]]:
+        # 用于书评系统
         def helper(subStr):
             i, j = 0, len(subStr) - 1
             while i <= j:
